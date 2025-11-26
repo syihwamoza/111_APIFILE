@@ -1,14 +1,14 @@
 const express = require('express');
 const connectDB = require('./config/db');
-//const apiroute = require('./routes/apiroute'); 
+const apiRoutes = require('./routes/api');
 
 const app = express();
 const PORT = 3000;
 
-app,use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-//app.use('/api/v1', apiRoute);
+app.use('/api/v1', apiRoutes);
 
 async function startServer (){
     await connectDB();
@@ -17,4 +17,3 @@ async function startServer (){
     });
 }
 startServer();
-
